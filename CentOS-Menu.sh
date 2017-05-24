@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # ------------------------------------------------------------------------------
-# Filename: Menu.sh
+# Filename: CentOS-Menu.sh
 # Last Edited: 5-24-2017    
-# Version 1.2
 #
-#       - Added information banner
-#       - Modified for CentOS 7 specific
-#       - Minor text fixes
+# Change Log
+# v1.00, 04/23/2016 - Added information banner
+# v1.01, 05/24/2017 - Modified for CentOS 7 specific, Minor text fixes
+# v1.02, 05/24/2017 - Changed versioning format
 # ------------------------------------------------------------------------------
 
 # Usage instructions:
