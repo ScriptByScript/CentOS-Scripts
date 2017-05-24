@@ -49,5 +49,5 @@ do
   echo ""
   echo -e "Hit the <enter> key to continue..."
   echo ""
-  read input ##This will cause a pause so we can read the output of the selection before the loop clears the screen
+  read input # this will cause a pause so we can read the output of the selection before the loop clears the screen
 done
