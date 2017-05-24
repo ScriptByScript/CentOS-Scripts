@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ------------------------------------------------------------------------------
-# Filename: CentOS-Menu.sh
+# Filename: Menu.sh
 # Last Edited: 5-24-2017    
 #
 # Change Log
