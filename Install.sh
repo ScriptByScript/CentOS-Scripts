@@ -8,6 +8,7 @@
 # v1.00, 04/24/2017 - Initial
 # v1.01, 05/24/2017 - Cleaned up formatting
 # v1.02, 05/24/2017 - Changed versioning format, changed script name
+# v1.03, 07/11/2017 - Added additional entropy source
 # ------------------------------------------------------------------------------
 
 pause(){
