@@ -102,8 +102,8 @@ echo '==================================================='
 sleep 2
 yum install open-vm-tools -y
 yum install nano ncdu wget unzip haveged -y
-systemctl start haveged.service
-systemctl enable haveged.service
+systemctl enable haveged
+systemctl start haveged
 echo '=============================================================='
 echo -e '>> Step 6 of 8 - Installing Additional Utilities - \e[32mComplete\e[0m <<'
 echo '=============================================================='
