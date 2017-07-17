@@ -105,8 +105,8 @@ yum install open-vm-tools -y
 yum install nano ncdu wget unzip haveged -y
 systemctl enable haveged
 systemctl start haveged
-sed -i '/local/a echo 1000 >/sys/kernel/mm/ksm/sleep_millisecs' /etc/rc.local
-sed -i '/local/a echo 1 >/sys/kernel/mm/ksm/run' /etc/rc.local
+sed -i '/subsys/a echo 1000 >/sys/kernel/mm/ksm/sleep_millisecs' /etc/rc.local
+sed -i '/subsys/a echo 1 >/sys/kernel/mm/ksm/run' /etc/rc.local
 echo '=============================================================='
 echo -e '>> Step 6 of 8 - Installing Additional Utilities - \e[32mComplete\e[0m <<'
 echo '=============================================================='
