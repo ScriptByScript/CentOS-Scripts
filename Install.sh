@@ -104,6 +104,8 @@ yum install open-vm-tools -y
 yum install nano ncdu wget unzip haveged -y
 systemctl enable haveged
 systemctl start haveged
+sed -i '/local/a echo 1000 >/sys/kernel/mm/ksm/sleep_millisecs' /etc/rc.local
+sed -i '/local/a echo 1 >/sys/kernel/mm/ksm/run' /etc/rc.local
 echo '=============================================================='
 echo -e '>> Step 6 of 8 - Installing Additional Utilities - \e[32mComplete\e[0m <<'
 echo '=============================================================='
@@ -149,6 +151,10 @@ do
            systemctl start httpd.service
            systemctl enable httpd.service
            yum install mariadb-server mariadb mytop -y
+		   sed -i '/Systemd/a query_cache_type = 1' /etc/my.cnf
+		   sed -i '/Systemd/a query_cache_limit = 256K' /etc/my.cnf
+		   sed -i '/Systemd/a query_cache_min_res_unit = 2k' /etc/my.cnf
+		   sed -i '/Systemd/a query_cache_size = 80M' /etc/my.cnf
            systemctl start mariadb
            mysql_secure_installation
            systemctl enable mariadb.service
