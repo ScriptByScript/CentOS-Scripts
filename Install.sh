@@ -10,6 +10,7 @@
 # v1.02, 05/24/2017 - Changed versioning format, changed script name
 # v1.03, 07/11/2017 - Added additional entropy source
 # v1.04, 07/17/2017 - Added qcache settings for mariadb, added ksm run parameter
+# v1.05, 09/22/2017 - Changed redirect page to Duckduckgo
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -165,7 +166,7 @@ do
 		   systemctl start php-fpm.service
 		   systemctl enable php-fpm.service
 		   echo '<?php phpinfo(); ?>' >> /var/www/html/info.php
-		   echo '<?php header("Location: http://www.yourwebsite.com");' >> /var/www/html/index.php
+		   echo '<?php header("Location: http://www.duckduckgo.com");' >> /var/www/html/index.php
 		   echo 'exit; ?>' >> /var/www/html/index.php
 		   chown apache:apache -R /var/www/html/
 		   echo '' >> /etc/httpd/conf/httpd.conf
