@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------------------
 # Filename: Install.sh
-# Last Edited: 7-17-2017    
+# Last Edited: 12-21-2017    
 #
 # Change Log
 # v1.00, 04/24/2017 - Initial
@@ -11,6 +11,7 @@
 # v1.03, 07/11/2017 - Added additional entropy source
 # v1.04, 07/17/2017 - Added qcache settings for mariadb, added ksm run parameter
 # v1.05, 09/22/2017 - Changed redirect page to Duckduckgo
+# v1.06, 12/21/2017 - Added htop to utilities
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -103,7 +104,7 @@ echo '>> Step 6 of 8 - Installing Additional Utilities <<'
 echo '==================================================='
 sleep 2
 yum install open-vm-tools -y
-yum install nano ncdu wget unzip haveged -y
+yum install nano ncdu wget unzip haveged htop -y
 systemctl enable haveged
 systemctl start haveged
 sed -i '/subsys/a echo 1000 >/sys/kernel/mm/ksm/sleep_millisecs' /etc/rc.local
