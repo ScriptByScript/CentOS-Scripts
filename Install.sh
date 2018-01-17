@@ -12,6 +12,7 @@
 # v1.04, 07/17/2017 - Added qcache settings for mariadb, added ksm run parameter
 # v1.05, 09/22/2017 - Changed redirect page to Duckduckgo
 # v1.06, 12/21/2017 - Added htop to utilities
+# v1.07, 01/17/2018 - Added ccze for log color formatting
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -104,11 +105,9 @@ echo '>> Step 6 of 8 - Installing Additional Utilities <<'
 echo '==================================================='
 sleep 2
 yum install open-vm-tools -y
-yum install nano ncdu wget unzip haveged htop -y
+yum install nano ncdu wget unzip haveged htop ccze -y
 systemctl enable haveged
 systemctl start haveged
-sed -i '/subsys/a echo 1000 >/sys/kernel/mm/ksm/sleep_millisecs' /etc/rc.local
-sed -i '/subsys/a echo 1 >/sys/kernel/mm/ksm/run' /etc/rc.local
 echo '=============================================================='
 echo -e '>> Step 6 of 8 - Installing Additional Utilities - \e[32mComplete\e[0m <<'
 echo '=============================================================='
@@ -205,9 +204,9 @@ done
 sleep 5
 
 clear
-echo '====================================================='
-echo '>> All Operations Have Completed! Rebooting System <<'
-echo '====================================================='
+echo '===================================='
+echo '>> All Operations Have Completed! <<'
+echo '===================================='
 echo ''
 echo '>> Summary of Script Process <<'
 echo 'Step 1 - Created administrative user'
@@ -229,6 +228,11 @@ do
            break;;
 esac
 done
+
+echo ''
+echo ''
+echo -e '\e[31mRebooting System - you will lose connection to server\e[0m'
+echo ''
 
 sleep 1
 reboot
