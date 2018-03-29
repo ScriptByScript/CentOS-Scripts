@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------------------
 # Filename: Install.sh
-# Last Edited: 01-17-2018    
+# Last Edited: 03-29-2018    
 #
 # Change Log
 # v1.00, 04/24/2017 - Initial
@@ -13,6 +13,7 @@
 # v1.05, 09/22/2017 - Changed redirect page to Duckduckgo
 # v1.06, 12/21/2017 - Added htop to utilities
 # v1.07, 01/17/2018 - Added ccze for log color formatting
+# v1.08, 03/29/2018 - Added rsync to utilities
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -105,7 +106,7 @@ echo '>> Step 6 of 8 - Installing Additional Utilities <<'
 echo '==================================================='
 sleep 2
 yum install open-vm-tools -y
-yum install nano ncdu wget unzip haveged htop ccze -y
+yum install nano ncdu wget unzip haveged htop ccze rsync -y
 systemctl enable haveged
 systemctl start haveged
 echo '=============================================================='
