@@ -81,7 +81,7 @@ sleep 2
 timedatectl set-timezone America/Chicago
 yum install chrony -y
 systemctl enable chrony
-systemctl start chrony
+systemctl start chronyd
 echo '===================================================================================='
 echo -e '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing NTP - \e[32mComplete\e[0m <<'
 echo '===================================================================================='
