@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------------------
 # Filename: Install.sh
-# Last Edited: 03-29-2018    
+# Last Edited: 01-15-2019    
 #
 # Change Log
 # v1.00, 04/24/2017 - Initial
@@ -14,6 +14,7 @@
 # v1.06, 12/21/2017 - Added htop to utilities
 # v1.07, 01/17/2018 - Added ccze for log color formatting
 # v1.08, 03/29/2018 - Added rsync to utilities
+# v1.09, 01/15/2019 - Changed out NTP with Chrony
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -73,14 +74,14 @@ echo '==================================================='
 sleep 5
 
 clear
-echo '=========================================================================='
-echo '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing NTP <<'
-echo '=========================================================================='
+echo '============================================================================='
+echo '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing Chrony <<'
+echo '============================================================================='
 sleep 2
 timedatectl set-timezone America/Chicago
-yum install ntp -y
-systemctl enable ntpd
-systemctl start ntpd
+yum install chrony -y
+systemctl enable chrony
+systemctl start chrony
 echo '===================================================================================='
 echo -e '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing NTP - \e[32mComplete\e[0m <<'
 echo '===================================================================================='
@@ -135,7 +136,7 @@ clear
 echo '==================================='
 echo '>> Step 8 of 8 - Disable SELINUX <<'
 echo '==================================='
-sed -i --follow-symlinks 's/^SELINUX=.*/SELINUX=permissive/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
+sed -i --follow-symlinks 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
 echo '=============================================='
 echo -e '>> Step 8 of 8 - Disable SELINUX - \e[32mComplete\e[0m <<'
 echo '=============================================='
