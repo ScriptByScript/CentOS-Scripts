@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------------------
 # Filename: Install.sh
-# Last Edited: 01-15-2019    
+# Last Edited: 01-16-2019    
 #
 # Change Log
 # v1.00, 04/24/2017 - Initial
@@ -15,6 +15,7 @@
 # v1.07, 01/17/2018 - Added ccze for log color formatting
 # v1.08, 03/29/2018 - Added rsync to utilities
 # v1.09, 01/15/2019 - Changed out NTP with Chrony
+# v1.10, 01/16/2019 - Added Percona toolkit along with added memory enhancements
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -82,9 +83,9 @@ timedatectl set-timezone America/Chicago
 yum install chrony -y
 systemctl enable chronyd
 systemctl start chronyd
-echo '===================================================================================='
-echo -e '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing NTP - \e[32mComplete\e[0m <<'
-echo '===================================================================================='
+echo '======================================================================================='
+echo -e '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing Chrony - \e[32mComplete\e[0m <<'
+echo '======================================================================================='
 sleep 5
 
 clear
@@ -152,14 +153,17 @@ do
 
   case $ansopt1 in
    [yY]* ) yum install httpd -y
-           systemctl start httpd.service
+           sudo yum install http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -y
+           yum install percona-toolkit -y
+		   systemctl start httpd.service
            systemctl enable httpd.service
            yum install mariadb-server mariadb mytop -y
 		   sed -i '/Systemd/a query_cache_type = 1' /etc/my.cnf
 		   sed -i '/Systemd/a query_cache_limit = 256K' /etc/my.cnf
 		   sed -i '/Systemd/a query_cache_min_res_unit = 2k' /etc/my.cnf
 		   sed -i '/Systemd/a query_cache_size = 80M' /etc/my.cnf
-           systemctl start mariadb
+           sed -i '/Systemd/a malloc-lib=/usr/lib64/libjemalloc.so.1' /etc/my.cnf
+		   systemctl start mariadb
            mysql_secure_installation
            systemctl enable mariadb.service
            yum install php php-mysql php-fpm php-cli php-common php-devel php-pear php-gd php-mbstring php-xml php-ldap -y
@@ -214,7 +218,7 @@ echo '>> Summary of Script Process <<'
 echo 'Step 1 - Created administrative user'
 echo 'Step 2 - Disabled SSH root access'
 echo 'Step 3 - Configured firewall'
-echo 'Step 4 - Set timezone and NTP'
+echo 'Step 4 - Set timezone and Chrony'
 echo 'Step 5 - Installed EPEL repository'
 echo 'Step 6 - Installed additional utilities'
 echo 'Step 7 - Configured system hostname'
