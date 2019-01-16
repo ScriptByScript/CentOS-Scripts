@@ -153,8 +153,8 @@ do
 
   case $ansopt1 in
    [yY]* ) yum install httpd -y
-           sudo yum install http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -y
-           yum install percona-toolkit -y
+		   sudo yum install http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -y
+		   yum install percona-toolkit -y
 		   systemctl start httpd.service
            systemctl enable httpd.service
            yum install mariadb-server mariadb mytop -y
@@ -162,7 +162,7 @@ do
 		   sed -i '/Systemd/a query_cache_limit = 256K' /etc/my.cnf
 		   sed -i '/Systemd/a query_cache_min_res_unit = 2k' /etc/my.cnf
 		   sed -i '/Systemd/a query_cache_size = 80M' /etc/my.cnf
-           sed -i '/Systemd/a malloc-lib=/usr/lib64/libjemalloc.so.1' /etc/my.cnf
+		   sed -i '/Systemd/a malloc-lib=/usr/lib64/libjemalloc.so.1' /etc/my.cnf
 		   systemctl start mariadb
            mysql_secure_installation
            systemctl enable mariadb.service
