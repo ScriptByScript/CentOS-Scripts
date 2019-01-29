@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------------------
 # Filename: Install.sh
-# Last Edited: 01-16-2019    
+# Last Edited: 01-29-2019    
 #
 # Change Log
 # v1.00, 04/24/2017 - Initial
@@ -16,6 +16,7 @@
 # v1.08, 03/29/2018 - Added rsync to utilities
 # v1.09, 01/15/2019 - Changed out NTP with Chrony
 # v1.10, 01/16/2019 - Added Percona toolkit along with added memory enhancements
+# v1.11, 01/29/2019 - Removed Chrony, comes by default
 # ------------------------------------------------------------------------------
 
 pause(){
@@ -75,17 +76,14 @@ echo '==================================================='
 sleep 5
 
 clear
-echo '============================================================================='
-echo '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing Chrony <<'
-echo '============================================================================='
+echo '======================================================='
+echo '>> Step 4 of 8 - Setting Timezone To America/Chicago <<'
+echo '======================================================='
 sleep 2
 timedatectl set-timezone America/Chicago
-yum install chrony -y
-systemctl enable chronyd
-systemctl start chronyd
-echo '======================================================================================='
-echo -e '>> Step 4 of 8 - Setting Timezone To America/Chicago and Installing Chrony - \e[32mComplete\e[0m <<'
-echo '======================================================================================='
+echo '================================================================='
+echo -e '>> Step 4 of 8 - Setting Timezone To America/Chicago - \e[32mComplete\e[0m <<'
+echo '================================================================='
 sleep 5
 
 clear
@@ -218,7 +216,7 @@ echo '>> Summary of Script Process <<'
 echo 'Step 1 - Created administrative user'
 echo 'Step 2 - Disabled SSH root access'
 echo 'Step 3 - Configured firewall'
-echo 'Step 4 - Set timezone and Chrony'
+echo 'Step 4 - Set timezone'
 echo 'Step 5 - Installed EPEL repository'
 echo 'Step 6 - Installed additional utilities'
 echo 'Step 7 - Configured system hostname'
